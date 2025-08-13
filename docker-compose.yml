@@ -16,6 +16,26 @@ services:
     volumes:
       - nexus-data:/nexus-data
     restart: unless-stopped
+    networks:
+      - nexus-network
+
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    ports:
+      - "8443:443"
+      - "8444:8444"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./nginx/certs:/etc/nginx/certs:ro
+    depends_on:
+      - nexus
+    networks:
+      - nexus-network
 
 volumes:
   nexus-data:
+
+networks:
+  nexus-network:
+    driver: bridge

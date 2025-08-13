@@ -6,8 +6,8 @@ set +a
 # Configuration
 NEXUS_URL="http://localhost:8081"
 ADMIN_USER="admin"
-CURRENT_PASSWORD="admin123" # Replace with current admin password or use env var
-NEW_PASSWORD="${NEXUS_ADMIN_PASSWORD}"   # Replace with desired new password or use env var
+CURRENT_PASSWORD="admin123"
+NEW_PASSWORD="${NEXUS_ADMIN_PASSWORD}"
 
 # Check if curl is installed
 if ! command -v curl &> /dev/null; then
